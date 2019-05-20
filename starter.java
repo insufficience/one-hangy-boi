@@ -1,7 +1,7 @@
 public class starter {
 	
 	public static void main(String args[]) {
-		GameState g = new TheDorkKnight();
+		GameState g = new HangmanGame();
 		GameDriver game = new GameDriver(g);
 		game.play();
 	}
