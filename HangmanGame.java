@@ -3,9 +3,11 @@ public class HangmanGame implements GameState {
 	private Screen theGame;
 	private Player guesser;
 	private Player questioner;
-	public HangmanGame(boolean twoPlayer) {
-		theGame = new Screen();
+	private boolean twoPlayer;
+	public HangmanGame() {
 		guesser = new Player("You");
+		theGame = new Screen();
+		twoPlayer = theGame.start();
 		if(twoPlayer) {
 			questioner = new Player("The other guy");
 		}
