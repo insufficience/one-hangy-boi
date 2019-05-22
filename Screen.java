@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Screen implements DesignTeamExpectations, InputKeyControl {
 	
 	public Screen() {
-		
+		KeyController kC = new KeyController(Canvas.getInstance(),new starter());
 	}
 	
 	public void keyPress(String es) {
