@@ -1,3 +1,6 @@
+import pkg.*;
+import java.util.ArrayList;
+
 public interface DesignTeamExpectations {
 	
 	boolean didYouDoIt(); // returns true if the game is over
