@@ -1,3 +1,6 @@
+import pkg.*;
+import java.util.ArrayList;
+
 public class HangmanGame implements GameState {
 	
 	private Screen theGame;
