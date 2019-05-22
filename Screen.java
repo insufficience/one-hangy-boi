@@ -25,6 +25,6 @@ public class Screen implements DesignTeamExpectations, InputKeyControl {
 	}
 	
 	public String getGuess() {
-		return a.toString();
+		return a.guess();
 	}
 }
