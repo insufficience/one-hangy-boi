@@ -16,7 +16,10 @@ public class Screen implements DesignTeamExpectations, InputKeyControl {
 	}
 	
 	public boolean chooseMode() {
-		
+		if(){
+			return true;
+		}
+		return false;
 	}
 	
 	public String getGuess() {
