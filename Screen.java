@@ -7,10 +7,6 @@ public class Screen implements DesignTeamExpectations, InputKeyControl {
 		KeyController kC = new KeyController(Canvas.getInstance(),new starter());
 	}
 	
-	public Screen() {
-		
-	}
-	
 	public void keyPress(String es) {
 		
 	}
