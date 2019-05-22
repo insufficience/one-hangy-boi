@@ -6,7 +6,7 @@ public class Screen implements DesignTeamExpectations, InputKeyControl {
 	
 <<<<<<< HEAD
 	public Screen(HangmanGame b) {
-		a=b;
+		a = b;
 		KeyController kC = new KeyController(Canvas.getInstance(),new starter());
 =======
 	
