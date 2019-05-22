@@ -53,7 +53,7 @@ public class HangmanGame implements GameState {
 	}
 	
 	public String toString() {
-		moves.add(theGame.getGuess());
+		moves.add(0 , theGame.getGuess());
 		return moves.toString();
 	}
 }
