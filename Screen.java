@@ -4,6 +4,9 @@ import java.util.ArrayList;
 public class Screen implements DesignTeamExpectations, InputKeyControl {
 	
 	public Screen() {
+		KeyController kC = new KeyController(Canvas.getInstance(),new starter());
+	
+	public Screen() {
 		
 	}
 	
@@ -23,6 +26,6 @@ public class Screen implements DesignTeamExpectations, InputKeyControl {
 	}
 	
 	public String getGuess() {
-		return a.guess();
+		
 	}
 }
