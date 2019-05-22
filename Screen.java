@@ -1,14 +1,28 @@
+import pkg.*;
+import java.util.ArrayList;
+
 public class Screen implements DesignTeamExpectations, InputKeyControl {
 	
-	boolean didYouDoIt() {
+	public Screen() {
 		
 	}
 	
-	boolean chooseMode() {
+	public void keyPress(String es) {
 		
 	}
 	
-	String getGuess() {
+	public boolean didYouDoIt() {
+		
+	}
+	
+	public boolean chooseMode() {
+		if(){
+			return true;
+		}
+		return false;
+	}
+	
+	public String getGuess() {
 		
 	}
 }
