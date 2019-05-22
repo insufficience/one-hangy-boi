@@ -1,14 +1,18 @@
 public class Screen implements DesignTeamExpectations {
 	
-	boolean didYouDoIt() {
+	public Screen() {
 		
 	}
 	
-	boolean chooseMode() {
+	public boolean didYouDoIt() {
 		
 	}
 	
-	String getGuess() {
+	public boolean chooseMode() {
+		
+	}
+	
+	public String getGuess() {
 		
 	}
 }
