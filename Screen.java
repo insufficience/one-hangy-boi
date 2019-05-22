@@ -2,9 +2,11 @@ import pkg.*;
 import java.util.ArrayList;
 
 public class Screen implements DesignTeamExpectations, InputKeyControl {
+	private HangmanGame a;
 	
-	public Screen() {
-		
+	
+	public Screen(HangmanGame b) {
+		a = b;
 	}
 	
 	public void keyPress(String es) {
@@ -23,6 +25,6 @@ public class Screen implements DesignTeamExpectations, InputKeyControl {
 	}
 	
 	public String getGuess() {
-		
+		return a.toString();
 	}
 }
