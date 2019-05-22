@@ -1,6 +1,10 @@
-public class Screen implements DesignTeamExpectations {
+public class Screen implements DesignTeamExpectations implements InputKeyControl {
 	
 	public Screen() {
+		
+	}
+	
+	public void keyPress(String es) {
 		
 	}
 	
