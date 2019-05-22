@@ -2,15 +2,15 @@ import pkg.*;
 import java.util.ArrayList;
 
 public class Screen implements DesignTeamExpectations, InputKeyControl {
-	private HangmanGame a;
+	
 	
 <<<<<<< HEAD
-	public Screen(HangmanGame b) {
+	public Screen() {
 		a = b;
 		KeyController kC = new KeyController(Canvas.getInstance(),new starter());
 =======
 	
-	public Screen(HangmanGame b) {
+	public Screen() {
 		a = b;
 >>>>>>> 97391d241549ae7ce6c98c5fd29b0d8ffc507f29
 	}
