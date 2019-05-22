@@ -1,4 +1,4 @@
-public class Screen implements DesignTeamExpectations {
+public class Screen implements DesignTeamExpectations, InputKeyControl {
 	
 	boolean didYouDoIt() {
 		
