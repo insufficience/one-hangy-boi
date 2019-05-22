@@ -48,6 +48,10 @@ public class HangmanGame implements GameState {
 		}
 	}
 	
+	public String guess(){
+		return theGame.getGuess();
+	}
+	
 	public String toString() {
 		moves.add(theGame.getGuess());
 		return moves.toString();
