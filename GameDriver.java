@@ -15,11 +15,11 @@ public class GameDriver {
 		}
 		
 		if(state.getWinner() == null) {
-			System.out.println("Game ends in a draw");
+			System.out.println("Game ends in a draw.");
 		}
 		
 		else {
-			System.out.println(state.getWinner() + " wins");
+			System.out.println(state.getWinner() + " wins.");
 		}
 	}
 }
