@@ -15,6 +15,8 @@ public class HangmanGame implements GameState {
 	private void init() {
 		guesser = new Player("The guesser");
 		theGame = new Screen();
+		
+		
 		twoPlayer = theGame.chooseMode();
 		if(twoPlayer) {
 			questioner = new Player("The other guy");
