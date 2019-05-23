@@ -4,8 +4,7 @@ import java.util.ArrayList;
 public class HangmanGame implements GameState {
 	
 	private Screen theGame;
-	private Player guesser;
-	private Player questioner;
+	private Player guesser, questioner;
 	private boolean twoPlayer;
 	private ArrayList<String> moves;
 	
@@ -53,7 +52,7 @@ public class HangmanGame implements GameState {
 	}
 	
 	public String toString() {
-		moves.add(0 , theGame.getGuess());
+		moves.add(0, theGame.getGuess());
 		return moves.toString();
 	}
 }

@@ -12,7 +12,7 @@ public class GameDriver {
 	public void play() {
 		while(!state.isGameOver()) {
 			System.out.println(state);
-			System.out.print(state.getCurrentPlayer().getName() + ": ");
+			System.out.print(state.getCurrentPlayer().getName()+": ");
 			System.out.println(state.getCurrentPlayer().getNextMove(state));
 			state.makeMove(state.getCurrentPlayer().getNextMove(state));
 		}
@@ -22,7 +22,7 @@ public class GameDriver {
 		}
 		
 		else {
-			System.out.println(state.getWinner() + " wins.");
+			System.out.println(state.getWinner()+" wins.");
 		}
 	}
 }
