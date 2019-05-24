@@ -5,5 +5,7 @@ public class starter {
 	
 	public static void main(String args[]) {
 		Gallows g = new Gallows();
+		g.addOutline();
+		g.draw();
 	}
 }

@@ -2,11 +2,13 @@ import pkg.*;
 import java.util.ArrayList;
 
 public class Screen implements DesignTeamExpectations, InputKeyControl {
+	
 	private double ex;
 	private double why;
+	
 	public Screen() {
 		KeyController kC = new KeyController(Canvas.getInstance(), new starter());
-		MouseController mC = new MouseController(Canvas.getInstance(),new starter());
+		MouseController mC = new MouseController(Canvas.getInstance(), new starter());
 	}
 	
 	public void keyPress(String es) {
@@ -29,11 +31,13 @@ public class Screen implements DesignTeamExpectations, InputKeyControl {
 		single.draw();
 		dwouble.draw();
 		int count =1000;
-		while(count>0){
+		while(count>0) {
 			count--;
 			Canvas.pause(100);
-			if(ex>=one.getX()&&ex<=one.getX()
-			
+			if(ex >= one.getX() && ex <= one.getX()) {
+				
+			}
+		}
 	}
 	public void onMouseClick(double x, double y){
 		ex=x;
