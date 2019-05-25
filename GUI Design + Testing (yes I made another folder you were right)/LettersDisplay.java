@@ -7,6 +7,9 @@ public class LettersDisplay {
 	
 	public LettersDisplay() {
 		letters = new Text[26];
+		for(int i = 0; i < letters.length; i++) {
+			// letters[i] = new Text(, , Character.toString((char)(i+65)))
+		}
 	}
 	
 	public void setGreen(String greenLetter) {
