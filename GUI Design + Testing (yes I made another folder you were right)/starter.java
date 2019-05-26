@@ -7,7 +7,7 @@ public class starter {
 		Gallows g = new Gallows();
 		g.addOutline();
 		g.draw();
-		WordDisplay w = new WordDisplay("abcdefghijklmnopqrstuvwxyz");
+		WordDisplay w = new WordDisplay("fishies");
 		w.draw();
 	}
 }
