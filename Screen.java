@@ -3,37 +3,32 @@ import java.util.ArrayList;
 
 public class Screen implements DesignTeamExpectations, InputKeyControl,InputControl {
 	
-	private double ex = 0;
-	private double why = 0;
-	private String a;
+	private Rectangle background = new Rectangle(0, 0, 600, 600);
+	screenCover.setColor(Color.WHITE);
+	private Rectangle onePlayerBox;
+	private Rectangle twoPlayerBox;
+	private Text onePlayerLabel;
+	private Text twoPlayerLabel;
+	private Display gui;
 	private boolean askingForGuess = false;
-	private String b;
-	private Rectangle one;
-	private Text single;
-	private Rectangle two;
-	private Text dwouble;
-	private WordDisplay word;
-	private boolean bob;
+	private String playerGuess;
+	private boolean askingForMode = false;
+	private boolean playerMode;
 	
 	public Screen() {
 		KeyController kC = new KeyController(Canvas.getInstance(), new Screen());
 		MouseController mC = new MouseController(Canvas.getInstance(), new Screen());
-		one = new Rectangle(20, 50, 100,50);
-		two = new Rectangle(140, 50, 100,50);
-		one.setColor(Color.BLUE);
-		two.setColor(Color.BLUE);
-		one.fill();
-		two.fill();
-		single = new Text(30,60,"Single Player");
-		dwouble = new Text(150,60,"Double Player");
-		single.draw();
-		dwouble.draw();
+		onePlayerBox = new Rectangle(20, 50, 100,50);
+		twoPlayerBox = new Rectangle(140, 50, 100,50);
+		onePlayerBox.setColor(Color.BLUE);
+		twoPlayerBox.setColor(Color.BLUE);
+		onePlayerLabel = new Text(30, 60, "Single Player");
+		twoPlayerLabel = new Text(150, 60, "Double Player");
 	}
 	
 	public void keyPress(String es) {
 		if(askingForGuess) {
-			b = a;
-			a = es;
+			playerGuess = es;
 			askingForGuess = false;
 		}
 	}
@@ -41,26 +36,35 @@ public class Screen implements DesignTeamExpectations, InputKeyControl,InputCont
 		
 	}
 	public boolean chooseMode() {
-		while(){
+		askingForMode = true;
+		background.fill();
+		onePlayerBox.fill();
+		twoPlayerBox.fill();
+		onePlayerLabel.draw();
+		twoPlayerLabel.draw();
+		while(askingForMode) {
 			
 		}
-		return bob;
+		return playerMode;
 	}
-	public void onMouseClick(double ex, double why){
-		if(ex >= one.getX() && ex <= one.getX()+one.getLength()&&why >= one.getY() && why <= one.getY()+one.getHeight()){
-			bob= false;
+	public void onMouseClick(double ex, double why) {
+		ex = ex-8;
+		why = why-31;
+		if(askingForMode && ex > onePlayerBox.getX() && ex < onePlayerBox.getX()+onePlayerBox.getLength() && why > onePlayerBox.getY() && why < onePlayerBox.getY()+onePlayerBox.getHeight()) {
+			playerMode = false;
+			askingForMode = false;
 		}
-		if(ex >= two.getX() && ex <= two.getX()+two.getLength()&&why >= two.getY() && why <= two.getY()+two.getHeight()){
-			bob= true;
+		if(askingForMode && ex > twoPlayerBox.getX() && ex < twoPlayerBox.getX()+twoPlayerBox.getLength() && why > twoPlayerBox.getY() && why < twoPlayerBox.getY()+twoPlayerBox.getHeight()) {
+			playerMode = true;
+			askingForMode = false;
 		}
-		
 	}
 	public String getGuess() {
 		askingForGuess = true;
-		while(a.equals(b)) {
+		while(askingForGuess) {
 			
 		}
-		guess(a);
-		return a;
+		word.guess(playerGuess);
+		return playerGuess;
 	}
 }

@@ -1,16 +1,20 @@
 import pkg.*;
 import java.util.ArrayList;
 
-public class WordDisplay {
+public class Display {
 	
+	private Rectangle background = new Rectangle(0, 0, 600, 600);
+	screenCover.setColor(Color.WHITE);
 	private Text[] letters;
 	private Text[] underscores;
+	private Gallows g;
 	private LettersDisplay l;
 	private int startX = 100;
 	private int centerY = 515;
 	private int growth = 2;
+	private String guessWord;
 	
-	public WordDisplay(String word) {
+	public Display(String word) {
 		double size = 16*growth;
 		word = word.toUpperCase();
 		letters = new Text[word.length()];
@@ -31,26 +35,42 @@ public class WordDisplay {
 			letters[i].translate((underscores[i].getX()+underscores[i].getWidth()/2)-(letters[i].getX()+letters[i].getWidth()/2), 0);
 			System.out.println(underscores[i].getX()+", "+underscores[i].getWidth()+", "+underscores[i].getY()+", "+underscores[i].getHeight()+", "+letters[i].getX()+", "+letters[i].getWidth()+", "+letters[i].getY()+", "+letters[i].getHeight());
 		}
+		g = new Gallows();
+		g.draw();
 		l = new LettersDisplay();
 		l.draw();
+		guessWord = word;
 	}
 	
-	public void guess(String guessedLetter) {
+	public boolean guess(String guessedLetter) {
+		guessedLetter = guessedLetter.toUpperCase();
+		boolean trueGuess = false;
 		for(int i = 0; i < letters.length; i++) {
-			if(guessedLetter.toUpperCase().equals(letters[i])) {
+			if(guessedLetter.equals(letters[i])) {
 				letters[i].draw();
-				l.setGreen(guessedLetter);
+				guessWord = guessWord.substring(0, guessWord.indexOf(guessedLetter))+guessWord.substring(guessWord.indexOf(guessedLetter)+1, guessWord.length());
+				trueGuess = true;
 			}
-			else {
-				l.setRed(guessedLetter);
-			}
+		}
+		if(trueGuess) {
+			l.setGreen(guessedLetter);
+			return true;
+		}
+		else {
+			l.setRed(guessedLetter);
+			return false;
 		}
 	}
 	
+	public boolean gameOver() {
+		return guessWord.length() == 0;
+	}
+	
 	public void draw() {
+		background.fill();
 		for(int i = 0; i < underscores.length; i++) {
 			underscores[i].draw();
-			letters[i].draw();
+			// letters[i].draw();
 		}
 	}
 }
