@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Screen implements DesignTeamExpectations, InputKeyControl,InputControl {
 	
 	private Rectangle background = new Rectangle(0, 0, 600, 600);
-	screenCover.setColor(Color.WHITE);
+	//screenCover.setColor(Color.WHITE);    caused errors
 	private Rectangle onePlayerBox;
 	private Rectangle twoPlayerBox;
 	private Text onePlayerLabel;
