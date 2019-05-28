@@ -33,7 +33,7 @@ public class Screen implements DesignTeamExpectations, InputKeyControl,InputCont
 		}
 	}
 	public boolean didYouDoIt() {
-		
+		gui.gameOver();
 	}
 	public boolean chooseMode() {
 		askingForMode = true;
