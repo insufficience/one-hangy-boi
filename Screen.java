@@ -13,7 +13,7 @@ public class Screen implements DesignTeamExpectations, InputKeyControl,InputCont
 	private boolean askingForGuess = false;
 	private String playerGuess;
 	private boolean askingForMode = false;
-	private boolean playerMode;
+	private boolean playerMode = false;
 	
 	public Screen() {
 		KeyController kC = new KeyController(Canvas.getInstance(), new Screen());
@@ -45,13 +45,14 @@ public class Screen implements DesignTeamExpectations, InputKeyControl,InputCont
 		while(askingForMode) {
 			
 		}
+		background.translate(0,0);
 		return playerMode;
+		
 	}
 	public void onMouseClick(double ex, double why) {
-		ex = ex-8;
-		why = why-31;
+		ex -= 8;
+		why -= 31;
 		if(askingForMode && ex > onePlayerBox.getX() && ex < onePlayerBox.getX()+onePlayerBox.getLength() && why > onePlayerBox.getY() && why < onePlayerBox.getY()+onePlayerBox.getHeight()) {
-			playerMode = false;
 			askingForMode = false;
 		}
 		if(askingForMode && ex > twoPlayerBox.getX() && ex < twoPlayerBox.getX()+twoPlayerBox.getLength() && why > twoPlayerBox.getY() && why < twoPlayerBox.getY()+twoPlayerBox.getHeight()) {
@@ -62,9 +63,8 @@ public class Screen implements DesignTeamExpectations, InputKeyControl,InputCont
 	public String getGuess() {
 		askingForGuess = true;
 		while(askingForGuess) {
-			
 		}
-		word.guess(playerGuess);
+		word.guess(playerGuess);   ///?????
 		return playerGuess;
 	}
 }
