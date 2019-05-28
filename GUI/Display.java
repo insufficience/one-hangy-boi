@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Display {
 	
 	private Rectangle background = new Rectangle(0, 0, 600, 600);
-	screenCover.setColor(Color.WHITE);
+	//screenCover.setColor(Color.WHITE);
 	private Text[] letters;
 	private Text[] underscores;
 	private Gallows g;

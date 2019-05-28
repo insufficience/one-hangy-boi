@@ -1,4 +1,5 @@
 import pkg.*;
+import GUI.*;
 import java.util.ArrayList;
 
 public class Screen implements DesignTeamExpectations, InputKeyControl,InputControl {
@@ -52,10 +53,10 @@ public class Screen implements DesignTeamExpectations, InputKeyControl,InputCont
 	public void onMouseClick(double ex, double why) {
 		ex -= 8;
 		why -= 31;
-		if(askingForMode && ex > onePlayerBox.getX() && ex < onePlayerBox.getX()+onePlayerBox.getLength() && why > onePlayerBox.getY() && why < onePlayerBox.getY()+onePlayerBox.getHeight()) {
+		if(askingForMode && ex > onePlayerBox.getX() && ex < onePlayerBox.getX()+onePlayerBox.getWidth() && why > onePlayerBox.getY() && why < onePlayerBox.getY()+onePlayerBox.getHeight()) {
 			askingForMode = false;
 		}
-		if(askingForMode && ex > twoPlayerBox.getX() && ex < twoPlayerBox.getX()+twoPlayerBox.getLength() && why > twoPlayerBox.getY() && why < twoPlayerBox.getY()+twoPlayerBox.getHeight()) {
+		if(askingForMode && ex > twoPlayerBox.getX() && ex < twoPlayerBox.getX()+twoPlayerBox.getWidth() && why > twoPlayerBox.getY() && why < twoPlayerBox.getY()+twoPlayerBox.getHeight()) {
 			playerMode = true;
 			askingForMode = false;
 		}
@@ -64,7 +65,7 @@ public class Screen implements DesignTeamExpectations, InputKeyControl,InputCont
 		askingForGuess = true;
 		while(askingForGuess) {
 		}
-		word.guess(playerGuess);   ///?????
+		//word.guess(playerGuess);   ///????? no idea where word came from
 		return playerGuess;
 	}
 }
