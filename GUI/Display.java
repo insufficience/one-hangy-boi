@@ -3,8 +3,7 @@ import java.util.ArrayList;
 
 public class Display {
 	
-	private Rectangle background = new Rectangle(0, 0, 600, 600);
-	//screenCover.setColor(Color.WHITE);
+	private Rectangle background;
 	private Text[] letters;
 	private Text[] underscores;
 	private Gallows g;
@@ -15,6 +14,8 @@ public class Display {
 	private String guessWord;
 	
 	public Display(String word) {
+		background = new Rectangle(0, 0, 600, 600);
+		background.setColor(Color.WHITE);
 		double size = 16*growth;
 		word = word.toUpperCase();
 		letters = new Text[word.length()];
@@ -36,14 +37,13 @@ public class Display {
 			System.out.println(underscores[i].getX()+", "+underscores[i].getWidth()+", "+underscores[i].getY()+", "+underscores[i].getHeight()+", "+letters[i].getX()+", "+letters[i].getWidth()+", "+letters[i].getY()+", "+letters[i].getHeight());
 		}
 		g = new Gallows();
-		g.draw();
 		l = new LettersDisplay();
-		l.draw();
 		guessWord = word;
 	}
 	
 	public boolean guess(String guessedLetter) {
 		guessedLetter = guessedLetter.toUpperCase();
+		System.out.println(guessedLetter);
 		boolean trueGuess = false;
 		for(int i = 0; i < letters.length; i++) {
 			if(guessedLetter.equals(letters[i])) {
@@ -68,6 +68,9 @@ public class Display {
 	
 	public void draw() {
 		background.fill();
+		g.addOutline();
+		g.draw();
+		l.draw();
 		for(int i = 0; i < underscores.length; i++) {
 			underscores[i].draw();
 			// letters[i].draw();

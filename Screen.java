@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 public class Screen implements DesignTeamExpectations, InputKeyControl,InputControl {
 	
-	private Rectangle background = new Rectangle(0, 0, 600, 600);
-	//screenCover.setColor(Color.WHITE);    caused errors
+	private Rectangle background;
 	private Rectangle onePlayerBox;
 	private Rectangle twoPlayerBox;
 	private Text onePlayerLabel;
@@ -17,6 +16,8 @@ public class Screen implements DesignTeamExpectations, InputKeyControl,InputCont
 	private boolean playerMode = false;
 	
 	public Screen() {
+		background = new Rectangle(0, 0, 600, 600);
+		background.setColor(Color.WHITE);
 		KeyController kC = new KeyController(Canvas.getInstance(), new Screen());
 		MouseController mC = new MouseController(Canvas.getInstance(), new Screen());
 		onePlayerBox = new Rectangle(20, 50, 100,50);
@@ -65,7 +66,7 @@ public class Screen implements DesignTeamExpectations, InputKeyControl,InputCont
 		askingForGuess = true;
 		while(askingForGuess) {
 		}
-		//word.guess(playerGuess);   ///????? no idea where word came from
+		gui.guess(playerGuess);
 		return playerGuess;
 	}
 }

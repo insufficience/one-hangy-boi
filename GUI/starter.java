@@ -4,10 +4,8 @@ import java.util.ArrayList;
 public class starter {
 	
 	public static void main(String args[]) {
-		Gallows g = new Gallows();
-		g.addOutline();
-		g.draw();
-		WordDisplay w = new WordDisplay("fishies");
+		Display w = new Display("fishies");
 		w.draw();
+		w.guess("i");
 	}
 }
