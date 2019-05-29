@@ -46,7 +46,7 @@ public class Display {
 		System.out.println(guessedLetter);
 		boolean trueGuess = false;
 		for(int i = 0; i < letters.length; i++) {
-			if(guessedLetter.equals(letters[i])) {
+			if(guessWord.indexOf(guessedLetter) >= 0) {
 				letters[i].draw();
 				guessWord = guessWord.substring(0, guessWord.indexOf(guessedLetter))+guessWord.substring(guessWord.indexOf(guessedLetter)+1, guessWord.length());
 				trueGuess = true;
