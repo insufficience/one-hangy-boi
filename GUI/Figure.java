@@ -2,15 +2,15 @@ import pkg.*;
 import java.util.ArrayList;
 
 public class Figure {
+	
 	private int count = 0;
 	
-	
-	public Figure(){
+	public Figure() {
 		
 	}
 	
-	public void next(){
-		if(count == 0){
+	public void next() {
+		if(count == 0) {
 			head();
 		}
 		// else if(count == 1){
@@ -34,7 +34,7 @@ public class Figure {
 	}
 	
 	//173,190
-	private void head(){
+	private void head() {
 		Ellipse head = new Ellipse(150,190,50,50);
 		head.fill();
 	}

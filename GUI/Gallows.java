@@ -44,7 +44,7 @@ public class Gallows {
 				hardOutlines.get(hardOutlines.size()-1).fill();
 			}
 			else {
-				System.out.println("top "+top+" "+touchPoints);
+				// System.out.println("top "+top+" "+touchPoints);
 				int start = gallows[top].getX();
 				while(start < gallows[top].getX()+gallows[top].getWidth()) {
 					for(int c = 0; c < touchPoints.size(); c = c+2) {
@@ -88,7 +88,7 @@ public class Gallows {
 				hardOutlines.get(hardOutlines.size()-1).fill();
 			}
 			else {
-				System.out.println("left "+left+" "+touchPoints);
+				// System.out.println("left "+left+" "+touchPoints);
 				int start = gallows[left].getY();
 				while(start < gallows[left].getY()+gallows[left].getHeight()) {
 					for(int c = 0; c < touchPoints.size(); c = c+2) {
@@ -132,7 +132,7 @@ public class Gallows {
 				hardOutlines.get(hardOutlines.size()-1).fill();
 			}
 			else {
-				System.out.println("bottom "+bottom+" "+touchPoints);
+				// System.out.println("bottom "+bottom+" "+touchPoints);
 				int start = gallows[bottom].getX();
 				while(start < gallows[bottom].getX()+gallows[bottom].getWidth()) {
 					for(int c = 0; c < touchPoints.size(); c = c+2) {
@@ -176,7 +176,7 @@ public class Gallows {
 				hardOutlines.get(hardOutlines.size()-1).fill();
 			}
 			else {
-				System.out.println("right "+right+" "+touchPoints);
+				// System.out.println("right "+right+" "+touchPoints);
 				int start = gallows[right].getY();
 				while(start < gallows[right].getY()+gallows[right].getHeight()) {
 					for(int c = 0; c < touchPoints.size(); c = c+2) {
