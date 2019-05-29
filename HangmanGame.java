@@ -9,14 +9,12 @@ public class HangmanGame implements GameState {
 	private ArrayList<String> moves;
 	
 	public HangmanGame() {
+		guesser = new Player("The guesser");
+		theGame = new Screen();
 		init();
 	}
 	
 	private void init() {
-		guesser = new Player("The guesser");
-		theGame = new Screen();
-		
-		
 		twoPlayer = theGame.chooseMode();
 		if(twoPlayer) {
 			questioner = new Player("The other guy");

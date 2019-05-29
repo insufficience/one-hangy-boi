@@ -7,4 +7,3 @@ public interface DesignTeamExpectations {
 	boolean chooseMode(); // starts up the game and returns true if they choose two player modeu
 	String getGuess(); // gets the guesses
 }
-                            
