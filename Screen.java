@@ -50,6 +50,8 @@ public class Screen implements DesignTeamExpectations, InputKeyControl,InputCont
 		return playerMode;
 		
 	}
+	public String getTarget(){
+		if(
 	public void onMouseClick(double ex, double why) {
 		ex -= 8;
 		why -= 31;
