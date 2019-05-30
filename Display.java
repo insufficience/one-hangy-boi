@@ -8,6 +8,7 @@ public class Display {
 	private Text[] underscores;
 	private Gallows g;
 	private LettersDisplay l;
+	private Figure f;
 	private int startX = 100;
 	private int centerY = 515;
 	private int growth = 2;
@@ -39,6 +40,7 @@ public class Display {
 		}
 		g = new Gallows();
 		l = new LettersDisplay();
+		f = new Figure();
 		guessWord = word;
 		originalWord = word;
 	}
@@ -59,13 +61,22 @@ public class Display {
 			return true;
 		}
 		else {
-			l.setRed(guessedLetter);
+			if(originalWord.indexOf(guessedLetter) < 0) {
+				l.setRed(guessedLetter);
+				f.next();
+			}
+			
 			return false;
 		}
 	}
 	
 	public boolean gameOver() {
-		return guessWord.length() == 0;
+		if(f.count == f.numOfLimbs) {
+			for(int i = 0; i < letters.length; i++) {
+				letters[i].draw();
+			}
+		}
+		return (guessWord.length() == 0 || f.count == f.numOfLimbs);
 	}
 	
 	public void draw() {
