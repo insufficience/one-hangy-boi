@@ -5,13 +5,20 @@ public class Screen implements InputKeyControl,InputControl {
 	
 	private Rectangle background;
 	private Rectangle onePlayerBox;
+	private Rectangle select;
 	private Rectangle twoPlayerBox;
+	private Text submit;
+	private Text input;
 	private Text onePlayerLabel;
 	private Text twoPlayerLabel;
 	private Display gui;
 	private boolean askingForGuess = false;
+	private boolean askingForWord = false;
 	private String playerGuess;
+	private String inputWord;
 	private boolean askingForMode = false;
+	private boolean askingForInput = false;
+	private boolean Completion = false;
 	private boolean playerMode = false;
 	
 	public Screen() {
@@ -23,6 +30,11 @@ public class Screen implements InputKeyControl,InputControl {
 		twoPlayerBox.setColor(new Color(200, 200, 255));
 		onePlayerLabel = new Text(30, 60, "Single Player");
 		twoPlayerLabel = new Text(150, 60, "Double Player");
+		
+		select = new Rectangle(250, 200, 200,200);
+		select.setColor(new Color(200, 200, 255));
+		input = new Text(260, 230, "");
+		submit = new Text(260, 370, "Click to submit");
 	}
 	
 	public void keyPress(String s) {
@@ -31,6 +43,10 @@ public class Screen implements InputKeyControl,InputControl {
 			playerGuess = s;
 			askingForGuess = false;
 		}
+		if(askingForWord) {
+			inputWord = s;
+			askingForWord = false;
+		}
 	}
 	
 	public boolean didYouDoIt() {
@@ -38,6 +54,11 @@ public class Screen implements InputKeyControl,InputControl {
 	}
 	
 	public boolean chooseMode() {
+		background.translate(0,0);
+		onePlayerBox.translate(0,0);
+		twoPlayerBox.translate(0,0);
+		onePlayerLabel.translate(0,0);
+		twoPlayerLabel.translate(0,0);
 		askingForMode = true;
 		background.fill();
 		onePlayerBox.fill();
@@ -47,8 +68,23 @@ public class Screen implements InputKeyControl,InputControl {
 		while(askingForMode) {
 			System.out.print(""); // for some reason it has to be doing something to work
 		}
-		if(playerMode) {
-			gui = new Display("shithowdowedothis");
+		if(playerMode) { /**Daniel#1:works except always one step behind. Will fix later. btw, body thing doesn't work.**/
+			background.translate(0,0);
+			select.fill();
+			submit.draw();
+			input.draw();
+			String word="";
+			while(!Completion){
+				askingForWord=true;
+				while(askingForWord){
+					System.out.print("");
+				}
+				input.setText(word);
+				word+=inputWord;
+			}
+			background.translate(0,0);
+			gui = new Display(word);
+			System.out.print("hguyyu");
 		}
 		else {
 			EasyReader words = new EasyReader("RandomWords.txt");
@@ -65,17 +101,14 @@ public class Screen implements InputKeyControl,InputControl {
 			}
 			gui = new Display(chosenWord);
 		}
+		background.translate(0,0);
 		gui.draw();
 		return playerMode;
 	}
-	
-	// public String getTarget() { // ????? what is this
-		// if() {
-			
-		// }
-	// }
-	
 	public void onMouseClick(double x, double y) {
+		if(x > select.getX() && x < select.getX()+select.getWidth() && y > select.getY() && y < select.getY()+select.getHeight()) {
+			Completion = true;
+		}
 		x -= 8;
 		y -= 31;
 		// System.out.println("clickityclack: "+x+", "+y);
