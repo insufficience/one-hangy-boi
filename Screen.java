@@ -68,7 +68,7 @@ public class Screen implements InputKeyControl,InputControl {
 		while(askingForMode) {
 			System.out.print(""); // for some reason it has to be doing something to work
 		}
-		if(playerMode) { /**Daniel#1:works except always one step behind. Will fix later. btw, body thing doesn't work.**/
+		if(playerMode) { /**Daniel#1:works except always one step behind. Will fix later. btw, body thing doesn't work. Unfortunately, that translate trick does not seem to be working**/
 			background.translate(0,0);
 			select.fill();
 			submit.draw();
