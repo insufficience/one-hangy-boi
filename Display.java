@@ -3,7 +3,6 @@ import java.util.ArrayList;
 
 public class Display {
 	
-	private Rectangle background;
 	private Text[] letters;
 	private Text[] underscores;
 	private Gallows g;
@@ -16,8 +15,6 @@ public class Display {
 	private String originalWord;
 	
 	public Display(String word) {
-		background = new Rectangle(0, 0, 600, 600);
-		background.setColor(Color.WHITE);
 		double size = 16*growth;
 		word = word.toUpperCase();
 		letters = new Text[word.length()];
@@ -65,7 +62,6 @@ public class Display {
 				l.setRed(guessedLetter);
 				f.next();
 			}
-			
 			return false;
 		}
 	}
@@ -80,7 +76,6 @@ public class Display {
 	}
 	
 	public void draw() {
-		background.fill();
 		g.addOutline();
 		g.draw();
 		l.draw();
