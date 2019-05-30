@@ -19,18 +19,18 @@ public class Figure {
 	}
 	
 	private void arm1(){
-		for(int i = 0; i<20; i++){
-			Line a = new Line(150+i,240+i,110+i,350+i);
-			Line b = new Line(150.5+i, 240.5+i, 110.5+i, 350.5+i);
+		for(int i = 0; i<10; i++){
+			Line a = new Line(150+i,240+i,110+i,300+i);
+			Line b = new Line(150.5+i, 240.5+i, 110.5+i, 300.5+i);
 			a.draw();
 			b.draw();
 		}
 	}
 	
 	private void arm2(){
-		for(int i = 0; i<20; i++){
-			Line a = new Line(200-i, 240+i, 240-i, 350+i);
-			Line b = new Line(200.5-i, 240.5+i, 240.5-i, 350.5+i);
+		for(int i = 0; i<10; i++){
+			Line a = new Line(200-i, 240+i, 240-i, 300+i);
+			Line b = new Line(200.5-i, 240.5+i, 240.5-i, 300.5+i);
 			b.draw();
 			a.draw();
 		}
