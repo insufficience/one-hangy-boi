@@ -211,6 +211,5 @@ public class Gallows {
 			hardOutlines.get(j).fill();
 		}
 		Figure figure = new Figure();
-		figure.next();
 	}
 }
