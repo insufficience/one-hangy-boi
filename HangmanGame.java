@@ -11,8 +11,6 @@ public class HangmanGame implements GameState {
 	public HangmanGame() {
 		guesser = new Player("The guesser");
 		theGame = new Screen();
-		KeyController kC = new KeyController(Canvas.getInstance(), theGame);
-		MouseController mC = new MouseController(Canvas.getInstance(), theGame);
 		init();
 	}
 	

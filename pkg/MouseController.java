@@ -20,7 +20,7 @@ public class MouseController{
             public void mouseClicked(MouseEvent e) {
                 int x=e.getX();
                 int y=e.getY();
-				iC.onMouseClick(x,y);
+                iC.onMouseClick(x,y);
             }
 
             @Override

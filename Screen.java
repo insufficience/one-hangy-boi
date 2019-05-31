@@ -18,34 +18,38 @@ public class Screen implements InputKeyControl,InputControl {
 	private String inputWord;
 	private boolean askingForMode = false;
 	private boolean askingForInput = false;
-	private boolean Completion = false;
 	private boolean playerMode = false;
 	
 	public Screen() {
 		background = new Rectangle(0, 0, 600, 600);
 		background.setColor(Color.WHITE);
-		onePlayerBox = new Rectangle(20, 50, 100,50);
+		KeyController kC = new KeyController(Canvas.getInstance(), this);
+		MouseController mC = new MouseController(Canvas.getInstance(), this);
+		onePlayerBox = new Rectangle(20, 50, 100, 50);
 		twoPlayerBox = new Rectangle(140, 50, 100,50);
 		onePlayerBox.setColor(new Color(200, 200, 255));
 		twoPlayerBox.setColor(new Color(200, 200, 255));
 		onePlayerLabel = new Text(30, 60, "Single Player");
 		twoPlayerLabel = new Text(150, 60, "Double Player");
-		
 		select = new Rectangle(250, 200, 200,200);
 		select.setColor(new Color(200, 200, 255));
 		input = new Text(260, 230, "");
 		submit = new Text(260, 370, "Click to submit");
+		select.translate(-600, 0);
+		submit.translate(-600, 0);
+		input.translate(-600, 0);
 	}
 	
 	public void keyPress(String s) {
-		// System.out.println("clunkityclank: "+s);
-		if(askingForGuess) {
-			playerGuess = s;
-			askingForGuess = false;
-		}
-		if(askingForWord) {
-			inputWord = s;
-			askingForWord = false;
+		if(s.toUpperCase().codePointAt(0) >= 65 && s.toUpperCase().codePointAt(0) <= 90) {
+			if(askingForGuess) {
+				playerGuess = s;
+				askingForGuess = false;
+			}
+			if(askingForInput) {
+				inputWord += s;
+				input.setText(inputWord);
+			}
 		}
 	}
 	
@@ -54,37 +58,33 @@ public class Screen implements InputKeyControl,InputControl {
 	}
 	
 	public boolean chooseMode() {
-		background.translate(0,0);
-		onePlayerBox.translate(0,0);
-		twoPlayerBox.translate(0,0);
-		onePlayerLabel.translate(0,0);
-		twoPlayerLabel.translate(0,0);
 		askingForMode = true;
 		background.fill();
 		onePlayerBox.fill();
 		twoPlayerBox.fill();
 		onePlayerLabel.draw();
 		twoPlayerLabel.draw();
+		
+		select.fill();
+		submit.draw();
+		input.draw();
 		while(askingForMode) {
-			System.out.print(""); // for some reason it has to be doing something to work
+			System.out.print("");
 		}
-		if(playerMode) { /**Daniel#1:works except always one step behind. Will fix later. btw, body thing doesn't work. Unfortunately, that translate trick does not seem to be working**/
-			background.translate(0,0);
-			select.fill();
-			submit.draw();
-			input.draw();
-			String word="";
-			while(!Completion){
-				askingForWord=true;
-				while(askingForWord){
-					System.out.print("");
-				}
-				input.setText(word);
-				word+=inputWord;
+		if(playerMode) {
+			askingForInput = true;
+			select.translate(600, 0);
+			submit.translate(600, 0);
+			input.translate(600, 0);
+			inputWord = "";
+			input.setText(inputWord);
+			while(askingForInput) {
+				System.out.print("");
 			}
-			background.translate(0,0);
-			gui = new Display(word);
-			System.out.print("hguyyu");
+			select.translate(-600, 0);
+			submit.translate(-600, 0);
+			input.translate(-600, 0);
+			gui = new Display(inputWord);
 		}
 		else {
 			EasyReader words = new EasyReader("RandomWords.txt");
@@ -93,7 +93,6 @@ public class Screen implements InputKeyControl,InputControl {
 				words.readLine();
 				fileLength++;
 			}
-			// System.out.println(fileLength);
 			words = new EasyReader("RandomWords.txt");
 			String chosenWord = words.readLine();
 			for(int j = 0; j < (int)(Math.random()*fileLength); j++) {
@@ -101,30 +100,29 @@ public class Screen implements InputKeyControl,InputControl {
 			}
 			gui = new Display(chosenWord);
 		}
-		background.translate(0,0);
 		gui.draw();
 		return playerMode;
 	}
 	public void onMouseClick(double x, double y) {
-		if(x > select.getX() && x < select.getX()+select.getWidth() && y > select.getY() && y < select.getY()+select.getHeight()) {
-			Completion = true;
-		}
 		x -= 8;
 		y -= 31;
-		// System.out.println("clickityclack: "+x+", "+y);
 		if(askingForMode && x > onePlayerBox.getX() && x < onePlayerBox.getX()+onePlayerBox.getWidth() && y > onePlayerBox.getY() && y < onePlayerBox.getY()+onePlayerBox.getHeight()) {
 			askingForMode = false;
+			playerMode = false;
 		}
 		if(askingForMode && x > twoPlayerBox.getX() && x < twoPlayerBox.getX()+twoPlayerBox.getWidth() && y > twoPlayerBox.getY() && y < twoPlayerBox.getY()+twoPlayerBox.getHeight()) {
 			askingForMode = false;
 			playerMode = true;
+		}
+		if(askingForInput && x > select.getX() && x < select.getX()+select.getWidth() && y > select.getY() && y < select.getY()+select.getHeight()) {
+			askingForInput = false;
 		}
 	}
 	
 	public String getGuess() {
 		askingForGuess = true;
 		while(askingForGuess) {
-			System.out.print(""); // same here
+			System.out.print("");
 		}
 		gui.guess(playerGuess);
 		return playerGuess;

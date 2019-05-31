@@ -34,4 +34,10 @@ public class LettersDisplay {
 			letters[i].draw();
 		}
 	}
+	
+	public void translate(int x, int y) {
+		for(int i = 0; i < letters.length; i++) {
+			letters[i].translate(x, y);
+		}
+	}
 }

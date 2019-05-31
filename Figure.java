@@ -8,35 +8,23 @@ public class Figure {
 	public int numOfLimbs = 6;
 	private Ellipse headShape;
 	private Rectangle bodyShape;
+	private Rectangle arm1ShapeA;
+	private Rectangle arm1ShapeB;
+	private Rectangle arm2ShapeA;
+	private Rectangle arm2ShapeB;
 	private Rectangle leg1Shape;
 	private Rectangle leg2Shape;
 	
 	public Figure() {
 		headShape = new Ellipse(150, 190, 50, 50);
-		bodyShape = new Rectangle(150,240,50,100);
-		leg1Shape = new Rectangle(150,340,20,50);
-		leg2Shape = new Rectangle(180,340,20,50);
+		bodyShape = new Rectangle(150, 240, 50, 100);
+		arm1ShapeA = new Rectangle(125, 245, 30, 20);
+		arm1ShapeB = new Rectangle(125, 245, 20, 65);
+		arm2ShapeA = new Rectangle(195, 245, 30, 20);
+		arm2ShapeB = new Rectangle(205, 245, 20, 65);
+		leg1Shape = new Rectangle(150, 340, 20, 50);
+		leg2Shape = new Rectangle(180, 340, 20, 50);
 	}
-	
-	private void arm1(){
-		for(int i = 0; i<10; i++){
-			Line a = new Line(150+i,240+i,110+i,300+i);
-			Line b = new Line(150.5+i, 240.5+i, 110.5+i, 300.5+i);
-			a.draw();
-			b.draw();
-		}
-	}
-	
-	private void arm2(){
-		for(int i = 0; i<10; i++){
-			Line a = new Line(200-i, 240+i, 240-i, 300+i);
-			Line b = new Line(200.5-i, 240.5+i, 240.5-i, 300.5+i);
-			b.draw();
-			a.draw();
-		}
-	}
-	
-	
 	
 	public void next() {
 		if(count == 0) {
@@ -63,17 +51,41 @@ public class Figure {
 		count++;
 	}
 	
-	//173,190
+	//175,190
 	private void head() {
 		headShape.fill();
 	}
+	
 	private void body() {
 		bodyShape.fill();
 	}
-	private void leg1(){
+	
+	private void arm1() {
+		arm1ShapeA.fill();
+		arm1ShapeB.fill();
+	}
+	
+	private void arm2() {
+		arm2ShapeA.fill();
+		arm2ShapeB.fill();
+	}
+	
+	private void leg1() {
 		leg1Shape.fill();
 	}
-	private void leg2(){
+	
+	private void leg2() {
 		leg2Shape.fill();
+	}
+	
+	public void translate(int x, int y) {
+		headShape.translate(x, y);
+		bodyShape.translate(x, y);
+		arm1ShapeA.translate(x, y);
+		arm1ShapeB.translate(x, y);
+		arm2ShapeA.translate(x, y);
+		arm2ShapeB.translate(x, y);
+		leg1Shape.translate(x, y);
+		leg2Shape.translate(x, y);
 	}
 }
