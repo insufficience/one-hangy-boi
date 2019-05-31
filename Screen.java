@@ -4,9 +4,11 @@ import java.util.ArrayList;
 public class Screen implements InputKeyControl,InputControl {
 	
 	private Rectangle background;
+	private Rectangle onePlayerBoxOutline;
 	private Rectangle onePlayerBox;
-	private Rectangle select;
+	private Rectangle twoPlayerBoxOutline;
 	private Rectangle twoPlayerBox;
+	private Rectangle select;
 	private Text submit;
 	private Text input;
 	private Text onePlayerLabel;
@@ -25,16 +27,18 @@ public class Screen implements InputKeyControl,InputControl {
 		background.setColor(Color.WHITE);
 		KeyController kC = new KeyController(Canvas.getInstance(), this);
 		MouseController mC = new MouseController(Canvas.getInstance(), this);
-		onePlayerBox = new Rectangle(20, 50, 100, 50);
-		twoPlayerBox = new Rectangle(140, 50, 100,50);
+		onePlayerBox = new Rectangle(50, 325, 225, 225);
+		onePlayerBoxOutline = new Rectangle(onePlayerBox.getX()-2, onePlayerBox.getY()-2, onePlayerBox.getWidth()+4, onePlayerBox.getHeight()+4);
+		twoPlayerBox = new Rectangle(325, 325, 225, 225);
+		twoPlayerBoxOutline = new Rectangle(twoPlayerBox.getX()-2, twoPlayerBox.getY()-2, twoPlayerBox.getWidth()+4, twoPlayerBox.getHeight()+4);
 		onePlayerBox.setColor(new Color(200, 200, 255));
 		twoPlayerBox.setColor(new Color(200, 200, 255));
-		onePlayerLabel = new Text(30, 60, "Single Player");
-		twoPlayerLabel = new Text(150, 60, "Double Player");
-		select = new Rectangle(250, 200, 200,200);
+		onePlayerLabel = new Text(onePlayerBox.getX()+10, onePlayerBox.getY()+10, "Player vs. Computer");
+		twoPlayerLabel = new Text(twoPlayerBox.getX()+10, twoPlayerBox.getY()+10, "Player vs. Player");
+		select = new Rectangle(twoPlayerBox.getX(), twoPlayerBox.getY(), twoPlayerBox.getWidth(), twoPlayerBox.getHeight());
 		select.setColor(new Color(200, 200, 255));
-		input = new Text(260, 230, "");
-		submit = new Text(260, 370, "Click to submit");
+		input = new Text(select.getX()+10, select.getY()+10, "");
+		submit = new Text(select.getX()+10, select.getY()+select.getHeight()-26, "Click to submit");
 		select.translate(-600, 0);
 		submit.translate(-600, 0);
 		input.translate(-600, 0);
@@ -60,6 +64,8 @@ public class Screen implements InputKeyControl,InputControl {
 	public boolean chooseMode() {
 		askingForMode = true;
 		background.fill();
+		onePlayerBoxOutline.fill();
+		twoPlayerBoxOutline.fill();
 		onePlayerBox.fill();
 		twoPlayerBox.fill();
 		onePlayerLabel.draw();
@@ -81,10 +87,11 @@ public class Screen implements InputKeyControl,InputControl {
 			while(askingForInput) {
 				System.out.print("");
 			}
+			gui = new Display(inputWord);
+			gui.draw();
 			select.translate(-600, 0);
 			submit.translate(-600, 0);
 			input.translate(-600, 0);
-			gui = new Display(inputWord);
 		}
 		else {
 			EasyReader words = new EasyReader("RandomWords.txt");
@@ -95,12 +102,12 @@ public class Screen implements InputKeyControl,InputControl {
 			}
 			words = new EasyReader("RandomWords.txt");
 			String chosenWord = words.readLine();
-			for(int j = 0; j < (int)(Math.random()*fileLength); j++) {
+			for(int i = 0; i < (int)(Math.random()*fileLength); i++) {
 				chosenWord = words.readLine();
 			}
 			gui = new Display(chosenWord);
+			gui.draw();
 		}
-		gui.draw();
 		return playerMode;
 	}
 	public void onMouseClick(double x, double y) {
