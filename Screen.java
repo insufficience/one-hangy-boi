@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class Screen implements InputKeyControl,InputControl {
 	
 	private Rectangle background;
+	private Text title;
 	private Rectangle onePlayerBoxOutline;
 	private Rectangle onePlayerBox;
 	private Rectangle twoPlayerBoxOutline;
@@ -27,6 +28,9 @@ public class Screen implements InputKeyControl,InputControl {
 		background.setColor(Color.WHITE);
 		KeyController kC = new KeyController(Canvas.getInstance(), this);
 		MouseController mC = new MouseController(Canvas.getInstance(), this);
+		title = new Text(50, 50, "ONE HANGY BOI");
+		title.grow((500-title.getWidth())/2,(225-title.getHeight())/2);
+		title.translate(50-title.getX(), 50-title.getY());
 		onePlayerBox = new Rectangle(50, 325, 225, 225);
 		onePlayerBoxOutline = new Rectangle(onePlayerBox.getX()-2, onePlayerBox.getY()-2, onePlayerBox.getWidth()+4, onePlayerBox.getHeight()+4);
 		twoPlayerBox = new Rectangle(325, 325, 225, 225);
@@ -34,7 +38,9 @@ public class Screen implements InputKeyControl,InputControl {
 		onePlayerBox.setColor(new Color(200, 200, 255));
 		twoPlayerBox.setColor(new Color(200, 200, 255));
 		onePlayerLabel = new Text(onePlayerBox.getX()+10, onePlayerBox.getY()+10, "Player vs. Computer");
+		onePlayerLabel.translate((onePlayerBox.getWidth()-onePlayerLabel.getWidth())/2+onePlayerBox.getX()-onePlayerLabel.getX(), (onePlayerBox.getHeight()-onePlayerLabel.getHeight())/2+onePlayerBox.getY()-onePlayerLabel.getY());
 		twoPlayerLabel = new Text(twoPlayerBox.getX()+10, twoPlayerBox.getY()+10, "Player vs. Player");
+		twoPlayerLabel.translate((twoPlayerBox.getWidth()-twoPlayerLabel.getWidth())/2+twoPlayerBox.getX()-twoPlayerLabel.getX(), (twoPlayerBox.getHeight()-twoPlayerLabel.getHeight())/2+twoPlayerBox.getY()-twoPlayerLabel.getY());
 		select = new Rectangle(twoPlayerBox.getX(), twoPlayerBox.getY(), twoPlayerBox.getWidth(), twoPlayerBox.getHeight());
 		select.setColor(new Color(200, 200, 255));
 		input = new Text(select.getX()+10, select.getY()+10, "");
@@ -64,18 +70,64 @@ public class Screen implements InputKeyControl,InputControl {
 	public boolean chooseMode() {
 		askingForMode = true;
 		background.fill();
+		title.draw();
 		onePlayerBoxOutline.fill();
 		twoPlayerBoxOutline.fill();
 		onePlayerBox.fill();
 		twoPlayerBox.fill();
 		onePlayerLabel.draw();
 		twoPlayerLabel.draw();
-		
 		select.fill();
 		submit.draw();
 		input.draw();
+		int r = (int)(Math.random()*256);
+		int rIncrement;
+		if((int)(Math.random()*2) == 0) {
+			rIncrement = 1;
+		}
+		else {
+			rIncrement = -1;
+		}
+		int g = (int)(Math.random()*256);
+		int gIncrement;
+		if((int)(Math.random()*2) == 0) {
+			gIncrement = 1;
+		}
+		else {
+			gIncrement = -1;
+		}
+		int b = (int)(Math.random()*256);
+		int bIncrement;
+		if((int)(Math.random()*2) == 0) {
+			bIncrement = 1;
+		}
+		else {
+			bIncrement = -1;
+		}
 		while(askingForMode) {
-			System.out.print("");
+			title.setColor(new Color(r, g, b));
+			if(r >= 185) {
+				rIncrement = -1;
+			}
+			if(r <= 70) {
+				rIncrement = 1;
+			}
+			r = r+(int)(Math.random()*2*rIncrement);
+			if(g >= 185) {
+				gIncrement = -1;
+			}
+			if(g <= 70) {
+				gIncrement = 1;
+			}
+			g = g+(int)(Math.random()*2*gIncrement);
+			if(b >= 185) {
+				bIncrement = -1;
+			}
+			if(b <= 70) {
+				bIncrement = 1;
+			}
+			b = b+(int)(Math.random()*2*bIncrement);
+			Canvas.pause(2);
 		}
 		if(playerMode) {
 			askingForInput = true;
