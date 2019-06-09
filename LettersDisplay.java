@@ -8,15 +8,19 @@ public class LettersDisplay {
 	private int spacing = 40;
 	private int x = 400;
 	private int y = 100;
+	private ArrayList<String> listLetters;
 	
 	public LettersDisplay() {
 		letters = new Text[26];
+		listLetters = new ArrayList<>();
 		for(int i = 0; i < letters.length-letters.length%perRow; i++) {
 			letters[i] = new Text(x+(i%perRow*spacing), y+(i/perRow*spacing), Character.toString((char)(i+65)));
+			listLetters.add(Character.toString((char)(i+65)));
 			letters[i].translate(x+(i%perRow*spacing)-(letters[i].getX()+letters[i].getWidth()/2), 0);
 		}
 		for(int j = letters.length-letters.length%perRow; j < letters.length; j++) {
 			letters[j] = new Text(x+(j%perRow*spacing)+((spacing*perRow-(spacing*(letters.length%perRow)))/2), y+(letters.length/perRow*spacing), Character.toString((char)(j+65)));
+			listLetters.add(Character.toString((char)(j+65)));
 			letters[j].translate(x+(j%perRow*spacing)+((spacing*perRow-(spacing*(letters.length%perRow)))/2)-(letters[j].getX()+letters[j].getWidth()/2), 0);
 		}
 	}
@@ -39,5 +43,9 @@ public class LettersDisplay {
 		for(int i = 0; i < letters.length; i++) {
 			letters[i].translate(x, y);
 		}
+	}
+	
+	public ArrayList<String> getLetters() {
+		return (ArrayList<String>)listLetters.clone();
 	}
 }

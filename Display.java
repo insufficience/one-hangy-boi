@@ -14,6 +14,7 @@ public class Display {
 	private int growth = 2;
 	private String guessWord;
 	private String originalWord;
+	private ArrayList<String> unguessed;
 	
 	public Display(String word) {
 		background = new Rectangle(0, 0, 600, 600);
@@ -39,31 +40,34 @@ public class Display {
 		g = new Gallows();
 		l = new LettersDisplay();
 		f = new Figure();
+		unguessed = l.getLetters();
 		guessWord = word;
 		originalWord = word;
 	}
 	
-	public boolean guess(String guessedLetter) {
+	public void guess(String guessedLetter) {
 		guessedLetter = guessedLetter.toUpperCase();
 		boolean trueGuess = false;
 		int index = 0;
-		while(guessWord.indexOf(guessedLetter) >= 0) {
-			letters[originalWord.indexOf(guessedLetter, index)].draw();
-			guessWord = guessWord.substring(0, guessWord.indexOf(guessedLetter))+guessWord.substring(guessWord.indexOf(guessedLetter)+1, guessWord.length());
-			trueGuess = true;
-			index = originalWord.indexOf(guessedLetter, index)+1;
-		}
-		if(trueGuess) {
-			l.setGreen(guessedLetter);
-			return true;
-		}
-		else {
-			if(originalWord.indexOf(guessedLetter) < 0) {
-				l.setRed(guessedLetter);
-				f.next();
+		if(unguessed.contains(guessedLetter)) {
+			unguessed.remove(unguessed.indexOf(guessedLetter));
+			while(guessWord.indexOf(guessedLetter) >= 0) {
+				letters[originalWord.indexOf(guessedLetter, index)].draw();
+				guessWord = guessWord.substring(0, guessWord.indexOf(guessedLetter))+guessWord.substring(guessWord.indexOf(guessedLetter)+1, guessWord.length());
+				trueGuess = true;
+				index = originalWord.indexOf(guessedLetter, index)+1;
 			}
-			return false;
+			if(trueGuess) {
+				l.setGreen(guessedLetter);
+			}
+			else {
+				if(originalWord.indexOf(guessedLetter) < 0) {
+					l.setRed(guessedLetter);
+					f.next();
+				}
+			}
 		}
+		
 	}
 	
 	public boolean gameOver() {

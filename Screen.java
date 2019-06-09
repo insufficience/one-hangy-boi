@@ -154,7 +154,8 @@ public class Screen implements InputKeyControl,InputControl {
 			}
 			words = new EasyReader("RandomWords.txt");
 			String chosenWord = words.readLine();
-			for(int i = 0; i < (int)(Math.random()*fileLength); i++) {
+			int num = (int)(Math.random()*fileLength);
+			for(int i = 0; i < num; i++) {
 				chosenWord = words.readLine();
 			}
 			gui = new Display(chosenWord);
