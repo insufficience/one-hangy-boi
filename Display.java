@@ -28,14 +28,14 @@ public class Display {
 		underscores[0].grow((((size-16)/16)*7), ((size-16)/2));
 		letters[0] = new Text(startX+(((size-16)/16)*7), centerY-5, word.substring(0, 1));
 		letters[0].grow((((size-16)/32)*(temp.getWidth())), ((size-16)/2));
-		letters[0].translate((underscores[0].getX()+underscores[0].getWidth()/2)-(letters[0].getX()+letters[0].getWidth()/2), 0);
+		letters[0].translate((underscores[0].getX()+underscores[0].getWidth()/2)-(letters[0].getX()+letters[0].getWidth()/2)-1, 0);
 		for(int i = 1; i < letters.length; i++) {
 			temp = new Text(-100, -100, word.substring(i, i+1));
 			underscores[i] = new Text(startX+((int)(((size-16)/16)*7))+(size/16*7*i)+(i*5*(size/16)), centerY-5, "_");
 			underscores[i].grow((((size-16)/16)*7), ((size-16)/2));
 			letters[i] = new Text(startX+((int)(((size)/16)*7))+(size/16*7*i)+(i*5*(size/16)), centerY-5, word.substring(i, i+1));
 			letters[i].grow((((size-16)/32)*(temp.getWidth())), ((size-16)/2));
-			letters[i].translate((underscores[i].getX()+underscores[i].getWidth()/2)-(letters[i].getX()+letters[i].getWidth()/2), 0);
+			letters[i].translate((underscores[i].getX()+underscores[i].getWidth()/2)-(letters[i].getX()+letters[i].getWidth()/2)-1, 0);
 		}
 		g = new Gallows();
 		l = new LettersDisplay();
