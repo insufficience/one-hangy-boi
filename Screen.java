@@ -29,9 +29,9 @@ public class Screen implements InputKeyControl,InputControl {
 		background.setColor(Color.WHITE);
 		KeyController kC = new KeyController(Canvas.getInstance(), this);
 		MouseController mC = new MouseController(Canvas.getInstance(), this);
-		title = new Text(50, 50, "ONE HANGY BOI");
-		title.grow((500-title.getWidth())/2,(225-title.getHeight())/2);
-		title.translate(50-title.getX(), 50-title.getY());
+		title = new Text(50, 50, "don't get hanged");
+		title.grow((500-title.getWidth())/2,(200-title.getHeight())/2);
+		title.translate((600-title.getWidth())/2-title.getX(), 50-title.getY());
 		onePlayerBox = new Rectangle(50, 325, 225, 225);
 		onePlayerBoxOutline = new Rectangle(onePlayerBox.getX()-2, onePlayerBox.getY()-2, onePlayerBox.getWidth()+4, onePlayerBox.getHeight()+4);
 		twoPlayerBox = new Rectangle(325, 325, 225, 225);
@@ -129,7 +129,7 @@ public class Screen implements InputKeyControl,InputControl {
 				bIncrement = 1;
 			}
 			b = b+(int)(Math.random()*2*bIncrement);
-			Canvas.pause(2);
+			Canvas.pause(4);
 		}
 		if(playerMode) {
 			askingForInput = true;
