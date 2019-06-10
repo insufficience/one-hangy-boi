@@ -22,6 +22,7 @@ public class Screen implements InputKeyControl,InputControl {
 	private boolean askingForMode = false;
 	private boolean askingForInput = false;
 	private boolean playerMode = false;
+	private ArrayList<Integer> usedWords;
 	
 	public Screen() {
 		background = new Rectangle(0, 0, 600, 600);
@@ -48,6 +49,7 @@ public class Screen implements InputKeyControl,InputControl {
 		select.translate(-600, 0);
 		submit.translate(-600, 0);
 		input.translate(-600, 0);
+		usedWords = new ArrayList<>();
 	}
 	
 	public void keyPress(String s) {
@@ -155,6 +157,10 @@ public class Screen implements InputKeyControl,InputControl {
 			words = new EasyReader("RandomWords.txt");
 			String chosenWord = words.readLine();
 			int num = (int)(Math.random()*fileLength);
+			while(usedWords.contains(num)) {
+				num = (int)(Math.random()*fileLength);
+			}
+			usedWords.add(num);
 			for(int i = 0; i < num; i++) {
 				chosenWord = words.readLine();
 			}
