@@ -78,7 +78,7 @@ public class Display {
 		}
 		if(guessWord.length() == 0 || f.count == f.numOfLimbs) {
 			Canvas.pause(1000);
-			translate(-600, 0);
+			translate(-2000, 0);
 		}
 		return (guessWord.length() == 0 || f.count == f.numOfLimbs);
 	}

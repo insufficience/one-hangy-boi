@@ -45,10 +45,10 @@ public class Screen implements InputKeyControl,InputControl {
 		select = new Rectangle(twoPlayerBox.getX(), twoPlayerBox.getY(), twoPlayerBox.getWidth(), twoPlayerBox.getHeight());
 		select.setColor(new Color(200, 200, 255));
 		input = new Text(select.getX()+10, select.getY()+10, "");
-		submit = new Text(select.getX()+10, select.getY()+select.getHeight()-26, "Click to submit");
-		select.translate(-600, 0);
-		submit.translate(-600, 0);
-		input.translate(-600, 0);
+		submit = new Text(select.getX()+10, select.getY()+select.getHeight()-26, "Click to submit (15 character limit)");
+		select.translate(-2000, 0);
+		submit.translate(-2000, 0);
+		input.translate(-2000, 0);
 		usedWords = new ArrayList<>();
 	}
 	
@@ -59,7 +59,7 @@ public class Screen implements InputKeyControl,InputControl {
 				askingForGuess = false;
 			}
 			if(askingForInput) {
-				if(inputWord.length()<=29){
+				if(inputWord.length()+1 <= 15){ // for some reason, if we put these two if statements together with an &&, it returns errors. we don't know why.
 					inputWord += s;
 					input.setText(inputWord);
 				}
@@ -135,9 +135,9 @@ public class Screen implements InputKeyControl,InputControl {
 		}
 		if(playerMode) {
 			askingForInput = true;
-			select.translate(600, 0);
-			submit.translate(600, 0);
-			input.translate(600, 0);
+			select.translate(2000, 0);
+			submit.translate(2000, 0);
+			input.translate(2000, 0);
 			inputWord = "";
 			input.setText(inputWord);
 			while(askingForInput) {
@@ -145,9 +145,9 @@ public class Screen implements InputKeyControl,InputControl {
 			}
 			gui = new Display(inputWord);
 			gui.draw();
-			select.translate(-600, 0);
-			submit.translate(-600, 0);
-			input.translate(-600, 0);
+			select.translate(-2000, 0);
+			submit.translate(-2000, 0);
+			input.translate(-2000, 0);
 		}
 		else {
 			EasyReader words = new EasyReader("RandomWords.txt");
