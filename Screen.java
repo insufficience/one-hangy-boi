@@ -181,7 +181,9 @@ public class Screen implements InputKeyControl,InputControl {
 			playerMode = true;
 		}
 		if(askingForInput && x > select.getX() && x < select.getX()+select.getWidth() && y > select.getY() && y < select.getY()+select.getHeight()) {
-			askingForInput = false;
+			if(inputWord.length() > 0) {
+				askingForInput = false;
+			}
 		}
 	}
 	
