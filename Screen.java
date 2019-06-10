@@ -58,7 +58,7 @@ public class Screen implements InputKeyControl,InputControl {
 				playerGuess = s;
 				askingForGuess = false;
 			}
-			if(askingForInput&&inputWord.length() < 29) {
+			if(askingForInput) {
 				inputWord += s;
 				input.setText(inputWord);
 			}
