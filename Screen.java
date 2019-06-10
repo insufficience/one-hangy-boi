@@ -59,8 +59,10 @@ public class Screen implements InputKeyControl,InputControl {
 				askingForGuess = false;
 			}
 			if(askingForInput) {
-				inputWord += s;
-				input.setText(inputWord);
+				if(inputWord.length()<=29){
+					inputWord += s;
+					input.setText(inputWord);
+				}
 			}
 		}
 	}
