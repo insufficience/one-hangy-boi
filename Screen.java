@@ -58,7 +58,7 @@ public class Screen implements InputKeyControl,InputControl {
 				playerGuess = s;
 				askingForGuess = false;
 			}
-			if(askingForInput) {
+			if(askingForInput&&inputWord.length() < 29) {
 				inputWord += s;
 				input.setText(inputWord);
 			}
@@ -183,6 +183,9 @@ public class Screen implements InputKeyControl,InputControl {
 		if(askingForInput && x > select.getX() && x < select.getX()+select.getWidth() && y > select.getY() && y < select.getY()+select.getHeight()) {
 			if(inputWord.length() > 0) {
 				askingForInput = false;
+			}
+			if(inputWord.length() > 5) {
+				askingForInput = true;
 			}
 		}
 	}
